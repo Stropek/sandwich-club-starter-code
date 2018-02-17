@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 
 import com.squareup.picasso.Picasso
@@ -39,7 +40,7 @@ class DetailActivity : AppCompatActivity() {
             return
         }
 
-        populateUI()
+        populateUI(sandwich)
         Picasso.with(this)
                 .load(sandwich.image)
                 .into(ingredientsIv)
@@ -52,8 +53,16 @@ class DetailActivity : AppCompatActivity() {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun populateUI() {
+    private fun populateUI(sandwich: Sandwich) {
+        val alsoKnownAsTextView = findViewById<TextView>(R.id.also_known_tv)
+        val originTextView = findViewById<TextView>(R.id.origin_tv)
+        val ingredientsTextView = findViewById<TextView>(R.id.ingredients_tv)
+        val descriptionTextView = findViewById<TextView>(R.id.description_tv)
 
+        alsoKnownAsTextView.text = sandwich.alsoKnownAs.joinToString(",")
+        originTextView.text = sandwich.placeOfOrigin
+        ingredientsTextView.text = sandwich.ingredients.joinToString(",")
+        descriptionTextView.text = sandwich.description
     }
 
     companion object {
