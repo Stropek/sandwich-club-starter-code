@@ -59,9 +59,9 @@ class DetailActivity : AppCompatActivity() {
         val ingredientsTextView = findViewById<TextView>(R.id.ingredients_tv)
         val descriptionTextView = findViewById<TextView>(R.id.description_tv)
 
-        alsoKnownAsTextView.text = sandwich.alsoKnownAs.joinToString(",")
+        alsoKnownAsTextView.text = sandwich.alsoKnownAs.joinToString(", ")
         originTextView.text = sandwich.placeOfOrigin
-        ingredientsTextView.text = sandwich.ingredients.joinToString(",")
+        ingredientsTextView.text = sandwich.ingredients.joinToString(", ")
         descriptionTextView.text = sandwich.description
     }
 
